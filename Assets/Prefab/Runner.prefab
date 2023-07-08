@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2422982145633810679}
   - component: {fileID: 374127285144111711}
   - component: {fileID: 5050886902115638773}
-  - component: {fileID: 3033288560607617634}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 7800170750113130783}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2422982145633810679
 MeshFilter:
@@ -107,27 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3033288560607617634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7202174039641552062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a304cd20fb60e9f45a1778ce92d3213a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounceParticleSystem: {fileID: 0}
-  startParticleSystem: {fileID: 0}
-  trailParticleSystem: {fileID: 0}
-  bounceParticleEmission: 20
-  startParticleEmission: 100
-  maxXSpeed: 20
-  maxStartXSpeed: 2
-  constantYSpeed: 10
-  extents: 0.5
 --- !u!1 &7602548464432477727
 GameObject:
   m_ObjectHideFlags: 0
