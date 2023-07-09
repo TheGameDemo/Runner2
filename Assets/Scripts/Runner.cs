@@ -64,17 +64,44 @@ public class Runner : MonoBehaviour
 
     public bool Run(float dt)
     {
-        if (position.x > 10000f)
-        {
-            Explode();
-            return false;
-        }
         position.x += startSpeedX * dt;
+        if (position.x + extents < currentObstacle.MaxX)
+        {
+            ConstrainY(currentObstacle);
+        }
+        else
+        {
+            bool stillInsideCurrent = position.x - extents < currentObstacle.MaxX;
+            if (stillInsideCurrent)
+            {
+                ConstrainY(currentObstacle);
+            }
+
+            ConstrainY(currentObstacle.Next);
+
+            if (!stillInsideCurrent)
+            {
+                currentObstacle = currentObstacle.Next;
+            }
+        }
         return true;
     }
 
     public void UpdateVisualization()
     {
         transform.localPosition = position;
+    }
+
+    void ConstrainY(SkylineObject obstacle)
+    {
+        FloatRange openY = obstacle.GapY;
+        if (position.y - extents <= openY.min)
+        {
+            position.y = openY.min + extents;
+        }
+        else if (position.y + extents >= openY.max)
+        {
+            position.y = openY.max - extents;
+        }
     }
 }
