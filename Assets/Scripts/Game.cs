@@ -31,8 +31,8 @@ public class Game : MonoBehaviour
     void StartNewGame()
     {
         trackingCamera.StartNewGame();
-        runner.StartNewGame();
-        obstacleGenerator.StartNewGame(trackingCamera);
+        runner.StartNewGame(obstacleGenerator.StartNewGame(trackingCamera));
+        trackingCamera.Track(runner.Position);
         for (int i = 0; i < skylineGenerators.Length; i++)
         {
             skylineGenerators[i].StartNewGame(trackingCamera);

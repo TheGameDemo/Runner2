@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ca2a3d4c1924cb5c6feeaba99c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapPrefab: {fileID: 0}
   prefabs:
   - {fileID: 2203703644188643678, guid: 96efe4323d6882546abf6a0c8f5440e4, type: 3}
   - {fileID: 6001729079980954611, guid: 1ff774009624ff94cb0ff7fef7acaa85, type: 3}
+  - {fileID: 1769909258584952716, guid: 9d5486d5d3a54154da5a093c1f73151b, type: 3}
   distance: 0
   altitude:
     min: -2
@@ -451,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ca2a3d4c1924cb5c6feeaba99c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapPrefab: {fileID: 0}
   prefabs:
   - {fileID: 7609634715509255088, guid: f9ec1d45e722ff54282307f7e9108cf5, type: 3}
   distance: 80
@@ -10405,6 +10408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ca2a3d4c1924cb5c6feeaba99c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapPrefab: {fileID: 0}
   prefabs:
   - {fileID: 7609634715509255088, guid: e8ef863457893af4c9a82941f7f72c66, type: 3}
   distance: 40
@@ -10525,6 +10529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ca2a3d4c1924cb5c6feeaba99c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gapPrefab: {fileID: 0}
   prefabs:
   - {fileID: 7609634715509255088, guid: 9d7786d77d9d0e247a9898baa42ff1b2, type: 3}
   distance: -10

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Runner : MonoBehaviour
 {
+    [SerializeField, Min(0f)]
+    float extents = 0.5f;
+
     [SerializeField]
     Light pointLight;
 
@@ -10,6 +13,8 @@ public class Runner : MonoBehaviour
 
     [SerializeField, Min(0f)]
     float startSpeedX = 5f;
+
+    SkylineObject currentObstacle;
 
     MeshRenderer meshRenderer;
 
@@ -24,9 +29,15 @@ public class Runner : MonoBehaviour
         pointLight.enabled = false;
     }
 
-    public void StartNewGame()
+    public void StartNewGame(SkylineObject obstacle)
     {
-        position = Vector2.zero;
+        currentObstacle = obstacle;
+        while (currentObstacle.MaxX < extents)
+        {
+            currentObstacle = currentObstacle.Next;
+        }
+
+        position = new Vector2(0f, currentObstacle.GapY.min + extents);
         transform.localPosition = position;
         meshRenderer.enabled = true;
         pointLight.enabled = true;

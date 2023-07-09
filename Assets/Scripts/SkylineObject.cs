@@ -76,4 +76,11 @@ public class SkylineObject : MonoBehaviour
         Next = null;
         return n;
     }
+
+    public void FillGap(Vector3 position, float gap)
+    {
+        extents = gap * 0.5f;
+        position.x += extents;
+        transform.localPosition = position;
+    }
 }
