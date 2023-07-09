@@ -17,6 +17,11 @@ public class Game : MonoBehaviour
 
     bool isPlaying;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 120;
+    }
+
     void StartNewGame()
     {
         trackingCamera.StartNewGame();
