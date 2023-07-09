@@ -159,6 +159,12 @@ MonoBehaviour:
   altitude:
     min: -2
     max: 2
+  gapLength:
+    min: 0
+    max: 5
+  sequenceLength:
+    min: 0
+    max: 5
 --- !u!4 &31403349
 Transform:
   m_ObjectHideFlags: 0
@@ -451,6 +457,12 @@ MonoBehaviour:
   altitude:
     min: 5
     max: 15
+  gapLength:
+    min: 0
+    max: 0
+  sequenceLength:
+    min: 0
+    max: 30
 --- !u!1 &922161851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10399,6 +10411,12 @@ MonoBehaviour:
   altitude:
     min: -5
     max: 1
+  gapLength:
+    min: 2
+    max: 10
+  sequenceLength:
+    min: 20
+    max: 60
 --- !u!114 &1625510717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
@@ -10513,6 +10531,12 @@ MonoBehaviour:
   altitude:
     min: -6
     max: -4
+  gapLength:
+    min: 1
+    max: 30
+  sequenceLength:
+    min: 0
+    max: 30
 --- !u!1 &1990630074
 GameObject:
   m_ObjectHideFlags: 0
