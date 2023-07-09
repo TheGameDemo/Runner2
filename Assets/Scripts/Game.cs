@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField]
+    SkylineGenerator obstacleGenerator;
+
     [SerializeField, Min(0.001f)]
     float maxDeltaTime = 1f / 120f;
 
@@ -29,6 +32,7 @@ public class Game : MonoBehaviour
     {
         trackingCamera.StartNewGame();
         runner.StartNewGame();
+        obstacleGenerator.StartNewGame(trackingCamera);
         for (int i = 0; i < skylineGenerators.Length; i++)
         {
             skylineGenerators[i].StartNewGame(trackingCamera);
@@ -64,6 +68,7 @@ public class Game : MonoBehaviour
         trackingCamera.Track(runner.Position);
         displayText.SetText("{0}", Mathf.Floor(runner.Position.x));
 
+        obstacleGenerator.FillView(trackingCamera);
         for (int i = 0; i < skylineGenerators.Length; i++)
         {
             skylineGenerators[i].FillView(trackingCamera);

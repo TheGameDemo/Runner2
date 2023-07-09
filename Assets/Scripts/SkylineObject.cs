@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class SkylineObject : MonoBehaviour
 {
+    [SerializeField]
+    FloatRange gapY;
+
     [SerializeField, Min(1f)]
     float extents;
+
+    public FloatRange GapY => gapY.Shift(transform.localPosition.y);
 
     public float MaxX => transform.localPosition.x + extents;
 
