@@ -20,6 +20,8 @@ public class Runner : MonoBehaviour
 
     Vector2 position;
 
+    bool transitioning;
+
     public Vector2 Position => position;
 
     private void Awake()
@@ -45,6 +47,7 @@ public class Runner : MonoBehaviour
         SetTrailEmission(true);
         trailSystem.Clear();
         trailSystem.Play();
+        transitioning = false;
     }
 
     void Explode()
@@ -65,6 +68,7 @@ public class Runner : MonoBehaviour
     public bool Run(float dt)
     {
         position.x += startSpeedX * dt;
+
         if (position.x + extents < currentObstacle.MaxX)
         {
             ConstrainY(currentObstacle);
@@ -75,6 +79,15 @@ public class Runner : MonoBehaviour
             if (stillInsideCurrent)
             {
                 ConstrainY(currentObstacle);
+            }
+
+            if (!transitioning)
+            {
+                if (CheckCollision())
+                {
+                    return false;
+                }
+                transitioning = true;
             }
 
             ConstrainY(currentObstacle.Next);
@@ -103,5 +116,24 @@ public class Runner : MonoBehaviour
         {
             position.y = openY.max - extents;
         }
+    }
+
+    bool CheckCollision()
+    {
+        Vector2 transitionPoint;
+        transitionPoint.x = currentObstacle.MaxX - extents;
+        transitionPoint.y = position.y;
+        float shrunkExtents = extents - 0.01f;
+        FloatRange gapY = currentObstacle.Next.GapY;
+        if (
+            transitionPoint.y - shrunkExtents < gapY.min ||
+            transitionPoint.y + shrunkExtents > gapY.max
+        )
+        {
+            position = transitionPoint;
+            Explode();
+            return true;
+        }
+        return false;
     }
 }
