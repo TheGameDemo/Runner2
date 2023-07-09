@@ -53,7 +53,7 @@ public class Runner : MonoBehaviour
 
     public bool Run(float dt)
     {
-        if (position.x > 25f)
+        if (position.x > 10000f)
         {
             Explode();
             return false;

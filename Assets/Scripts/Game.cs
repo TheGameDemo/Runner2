@@ -15,6 +15,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     TextMeshPro displayText;
 
+    [SerializeField]
+    SkylineGenerator[] skylineGenerators;
+
     bool isPlaying;
 
     private void Awake()
@@ -26,6 +29,10 @@ public class Game : MonoBehaviour
     {
         trackingCamera.StartNewGame();
         runner.StartNewGame();
+        for (int i = 0; i < skylineGenerators.Length; i++)
+        {
+            skylineGenerators[i].StartNewGame(trackingCamera);
+        }
         isPlaying = true;
     }
 
@@ -56,5 +63,10 @@ public class Game : MonoBehaviour
         runner.UpdateVisualization();
         trackingCamera.Track(runner.Position);
         displayText.SetText("{0}", Mathf.Floor(runner.Position.x));
+
+        for (int i = 0; i < skylineGenerators.Length; i++)
+        {
+            skylineGenerators[i].FillView(trackingCamera);
+        }
     }
 }
