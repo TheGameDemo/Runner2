@@ -152,11 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c294ca2a3d4c1924cb5c6feeaba99c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gapPrefab: {fileID: 0}
+  gapPrefab: {fileID: 1769909258584952716, guid: 9d5486d5d3a54154da5a093c1f73151b, type: 3}
   prefabs:
   - {fileID: 2203703644188643678, guid: 96efe4323d6882546abf6a0c8f5440e4, type: 3}
   - {fileID: 6001729079980954611, guid: 1ff774009624ff94cb0ff7fef7acaa85, type: 3}
-  - {fileID: 1769909258584952716, guid: 9d5486d5d3a54154da5a093c1f73151b, type: 3}
   distance: 0
   altitude:
     min: -2
@@ -5520,6 +5519,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: Runner
       objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[0].time
+      value: 0.0009766519
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[0].value
+      value: 2.0032964
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[1].value
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[0].tangentMode
+      value: 136
+      objectReference: {fileID: 0}
+    - target: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
+      propertyPath: runAccelerationCurve.m_Curve.Array.data[1].tangentMode
+      value: 136
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10461,7 +10504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a0fc0aeb643814e95616cbaecdf26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleGenerator: {fileID: 31403348}
   maxDeltaTime: 0.008333334
   runner: {fileID: 1625510717}
   trackingCamera: {fileID: 963194230}
@@ -10470,6 +10512,7 @@ MonoBehaviour:
   - {fileID: 855065675}
   - {fileID: 1160088124}
   - {fileID: 1652077219}
+  obstacleGenerator: {fileID: 31403348}
 --- !u!4 &1632533374
 Transform:
   m_ObjectHideFlags: 0

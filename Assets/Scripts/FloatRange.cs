@@ -13,8 +13,7 @@ public struct FloatRange
         this.max = max;
     }
 
-    public FloatRange GrowExtents(float extents) =>
-    new FloatRange(min - extents, max + extents);
+    public FloatRange GrowExtents(float extents) => new FloatRange(min - extents, max + extents);
 
     public FloatRange Shift(float shift) => new FloatRange(min + shift, max + shift);
 
