@@ -156,6 +156,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 2203703644188643678, guid: 96efe4323d6882546abf6a0c8f5440e4, type: 3}
   - {fileID: 6001729079980954611, guid: 1ff774009624ff94cb0ff7fef7acaa85, type: 3}
+  - {fileID: 6759700813937902674, guid: 55a6869fe03ab7b428c23360b3caebff, type: 3}
   distance: 0
   altitude:
     min: -4

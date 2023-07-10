@@ -131,4 +131,10 @@ public class SkylineObject : MonoBehaviour
         Next = null;
         return n;
     }
+
+    /// <summary>
+    /// Support arbitrary extra functionality
+    /// </summary>
+    /// <param name="runner"></param>
+    public virtual void Check(Runner runner) { }
 }

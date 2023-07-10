@@ -44,7 +44,11 @@ public class Runner : MonoBehaviour
 
     public Vector2 Position => position;
 
-    public float SpeedX => velocity.x;
+    public float SpeedX
+    {
+        get => velocity.x;
+        set => velocity.x = value;
+    }
 
     void SetTrailEmission(bool enabled)
     {
@@ -193,6 +197,8 @@ public class Runner : MonoBehaviour
             velocity.y = Mathf.Min(velocity.y, 0f);
             jumpTimeRemaining = 0f;
         }
+
+        obstacle.Check(this);
     }
 
     /// <summary>
