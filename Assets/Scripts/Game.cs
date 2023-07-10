@@ -24,6 +24,12 @@ public class Game : MonoBehaviour
     [SerializeField]
     SkylineGenerator obstacleGenerator;
 
+    /// <summary>
+    /// Use to increase the gap and sequence length when invoking FillView on the obstacle generator when the game is updated.
+    /// </summary>
+    [SerializeField]
+    float extraGapFactor = 0.5f, extraSequenceFactor = 1f;
+
     bool isPlaying;
 
     private void Awake()
@@ -85,7 +91,11 @@ public class Game : MonoBehaviour
 
         displayText.SetText("{0}", Mathf.Floor(runner.Position.x));
 
-        obstacleGenerator.FillView(trackingCamera);
+        obstacleGenerator.FillView(
+            trackingCamera,
+            runner.SpeedX * extraGapFactor,
+            runner.SpeedX * extraSequenceFactor
+        );
         for (int i = 0; i < skylineGenerators.Length; i++)
         {
             skylineGenerators[i].FillView(trackingCamera);

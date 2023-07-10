@@ -44,6 +44,8 @@ public class Runner : MonoBehaviour
 
     public Vector2 Position => position;
 
+    public float SpeedX => velocity.x;
+
     void SetTrailEmission(bool enabled)
     {
         ParticleSystem.EmissionModule emission = trailSystem.emission;

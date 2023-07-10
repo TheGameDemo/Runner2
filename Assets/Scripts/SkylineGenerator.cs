@@ -30,6 +30,15 @@ public class SkylineGenerator : MonoBehaviour
     [SerializeField]
     FloatRange gapLength, sequenceLength;
 
+    [SerializeField, Min(0f)]
+    float maxYDifference;
+
+    /// <summary>
+    /// Ensure that the view is filled with a continuous platform when a new game begins.
+    /// </summary>
+    [SerializeField]
+    bool singleSequenceStart;
+
     // To determine the visible X range take the camera's range and add a 10-unit border to it.
     const float border = 10f;
 
@@ -68,7 +77,8 @@ public class SkylineGenerator : MonoBehaviour
 
         FloatRange visibleX = view.VisibleX(distance).GrowExtents(border);
         endPosition = new Vector3(visibleX.min, altitude.RandomValue, distance);
-        sequenceEndX = sequenceLength.RandomValue;                                  // Start with a random sequence length
+        sequenceEndX =
+            singleSequenceStart ? visibleX.max : endPosition.x + sequenceLength.RandomValue;                              // Start with a random sequence length
 
         leftmost = rightmost = GetInstance();
         endPosition = rightmost.PlaceAfter(endPosition);
@@ -81,7 +91,7 @@ public class SkylineGenerator : MonoBehaviour
     /// Fills the current view based on the tracking camera.
     /// </summary>
     /// <param name="view"></param>
-    public void FillView(TrackingCamera view)
+    public void FillView(TrackingCamera view, float extraGapLength = 0f, float extraSequenceLength = 0f)
     {
         FloatRange visibleX = view.VisibleX(distance).GrowExtents(border);
 
@@ -98,7 +108,9 @@ public class SkylineGenerator : MonoBehaviour
             if (endPosition.x > sequenceEndX)
             {
                 // Start a new sequence with a random gap and sequence length.
-                StartNewSequence(gapLength.RandomValue, sequenceLength.RandomValue);
+                // nsure minimum lengths based on the runner's speed so the obstacles are guaranteed to be navigable.
+                StartNewSequence(gapLength.RandomValue + extraGapLength,
+                    sequenceLength.RandomValue + extraSequenceLength);
             }
             rightmost = rightmost.Next = GetInstance();
             endPosition = rightmost.PlaceAfter(endPosition);
@@ -122,7 +134,19 @@ public class SkylineGenerator : MonoBehaviour
         }
 
         endPosition.x += gap;
-        endPosition.y = altitude.RandomValue;
         sequenceEndX = endPosition.x + sequence;
+
+        // Apply maxYDifference by using a constrained range for the Y coordinate of the new end position
+        if (maxYDifference > 0f)
+        {
+            endPosition.y = new FloatRange(
+                Mathf.Max(endPosition.y - maxYDifference, altitude.min),
+                Mathf.Min(endPosition.y + maxYDifference, altitude.max)
+            ).RandomValue;
+        }
+        else
+        {
+            endPosition.y = altitude.RandomValue;
+        }
     }
 }
