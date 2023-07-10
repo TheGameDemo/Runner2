@@ -158,14 +158,16 @@ MonoBehaviour:
   - {fileID: 6001729079980954611, guid: 1ff774009624ff94cb0ff7fef7acaa85, type: 3}
   distance: 0
   altitude:
-    min: -2
-    max: 2
+    min: -4
+    max: 7
   gapLength:
     min: 0
     max: 5
   sequenceLength:
     min: 0
     max: 5
+  maxYDifference: 5
+  singleSequenceStart: 1
 --- !u!4 &31403349
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +175,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 31403347}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -465,6 +467,8 @@ MonoBehaviour:
   sequenceLength:
     min: 0
     max: 30
+  maxYDifference: 0
+  singleSequenceStart: 0
 --- !u!1 &922161851
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +672,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ac52da2e3ce224da8a6da23220540a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 7
+      value: 7
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!199 &963194231
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -10464,6 +10492,8 @@ MonoBehaviour:
   sequenceLength:
     min: 20
     max: 60
+  maxYDifference: 0
+  singleSequenceStart: 0
 --- !u!114 &1625510717 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8584361757223764062, guid: 6c7ba497e7a464d47919508192870cb0, type: 3}
@@ -10513,6 +10543,8 @@ MonoBehaviour:
   - {fileID: 1160088124}
   - {fileID: 1652077219}
   obstacleGenerator: {fileID: 31403348}
+  extraGapFactor: 0.5
+  extraSequenceFactor: 1
 --- !u!4 &1632533374
 Transform:
   m_ObjectHideFlags: 0
@@ -10585,6 +10617,8 @@ MonoBehaviour:
   sequenceLength:
     min: 0
     max: 30
+  maxYDifference: 0
+  singleSequenceStart: 0
 --- !u!1 &1990630074
 GameObject:
   m_ObjectHideFlags: 0

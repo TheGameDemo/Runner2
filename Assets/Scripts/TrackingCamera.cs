@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class TrackingCamera : MonoBehaviour
 {
+    /// <summary>
+    /// To keep TrackingCamera at an acceptable elevation
+    /// Evaluate it to adjust the Y position based on itself in Track.
+    /// </summary>
+    [SerializeField]
+    AnimationCurve yCurve;
+
     // We use the camera's starting position as the fixed offset.
     Vector3 offset, position;
 
@@ -46,6 +53,7 @@ public class TrackingCamera : MonoBehaviour
     public void Track(Vector3 focusPoint)
     {
         position = focusPoint + offset;
+        position.y = yCurve.Evaluate(position.y);
         transform.localPosition = position;
     }
 
