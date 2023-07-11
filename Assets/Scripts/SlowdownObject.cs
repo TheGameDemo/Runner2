@@ -27,6 +27,8 @@ public class SlowdownObject : SkylineObject
         )
         {
             item.gameObject.SetActive(false);
+            // explosionSystem cannot belong to debuff,
+            // which may result in explosionSystem being destroyed before it is completed due to debuff being destroyed
             explosionSystem.Emit(explosionSystem.main.maxParticles);
             runner.SpeedX *= speedFactor;
         }
