@@ -27,6 +27,13 @@ public class Runner : MonoBehaviour
     [SerializeField]
     AnimationCurve runAccelerationCurve;
 
+    [SerializeField, Min(0f)]
+    float spinDuration = 0.75f;
+
+    float spinTimeRemaining;
+
+    Vector3 spinRotation;
+
     SkylineObject currentObstacle;
 
     MeshRenderer meshRenderer;
@@ -74,9 +81,9 @@ public class Runner : MonoBehaviour
             currentObstacle = currentObstacle.Next;
         }
 
-        // Sets the position to zero
+        // Sets the position to zero and clear the rotation
         position = new Vector2(0f, currentObstacle.GapY.min + extents);
-        transform.localPosition = position;
+        transform.SetPositionAndRotation(position, Quaternion.identity);
 
         // Enables the renderer and light
         meshRenderer.enabled = true;
@@ -93,6 +100,8 @@ public class Runner : MonoBehaviour
         transitioning = false;
         grounded = true;
         jumpTimeRemaining = 0f;
+        spinTimeRemaining = 0f;
+
         velocity = new Vector2(startSpeedX, 0f);
     }
 
@@ -170,6 +179,14 @@ public class Runner : MonoBehaviour
     public void UpdateVisualization()
     {
         transform.localPosition = position;
+
+        if (spinTimeRemaining > 0f)
+        {
+            spinTimeRemaining = Mathf.Max(spinTimeRemaining - Time.deltaTime, 0f);
+            transform.localRotation = Quaternion.Euler(
+                Vector3.Lerp(spinRotation, Vector3.zero, spinTimeRemaining / spinDuration)
+            );
+        }
     }
 
     /// <summary>
@@ -237,6 +254,13 @@ public class Runner : MonoBehaviour
         if (grounded)
         {
             jumpTimeRemaining = jumpDuration.max;
+
+            if (spinTimeRemaining <= 0f)
+            {
+                spinTimeRemaining = spinDuration;
+                spinRotation = Vector3.zero;
+                spinRotation[Random.Range(0, 3)] = Random.value < 0.5f ? -90f : 90f;
+            }
         }
     }
 
